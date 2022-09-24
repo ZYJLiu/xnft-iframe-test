@@ -9,4 +9,12 @@ export default NextAuth({
     }),
   ],
   secret: process.env.JWT_SECRET,
+  pages: {
+    signIn: "/auth/signin",
+  },
+  callbacks: {
+    async redirect(url, baseUrl) {
+      return "http://localhost:3000/"
+    },
+  },
 })
