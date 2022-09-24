@@ -1,13 +1,17 @@
-import { ChakraProvider } from '@chakra-ui/react'
+import { ChakraProvider } from "@chakra-ui/react"
 
-import theme from '../theme'
-import { AppProps } from 'next/app'
+import theme from "../theme"
+import { AppProps } from "next/app"
 
-function MyApp({ Component, pageProps }: AppProps) {
+import { SessionProvider } from "next-auth/react"
+
+function MyApp({ Component, pageProps, session }: AppProps) {
   return (
-    <ChakraProvider theme={theme}>
-      <Component {...pageProps} />
-    </ChakraProvider>
+    <SessionProvider session={session}>
+      <ChakraProvider theme={theme}>
+        <Component {...pageProps} />
+      </ChakraProvider>
+    </SessionProvider>
   )
 }
 
