@@ -1,4 +1,4 @@
-import { Button, Text, Center, VStack, Image } from "@chakra-ui/react"
+import { Button } from "@chakra-ui/react"
 import { useSession, signIn, signOut } from "next-auth/react"
 
 export const Login = () => {
@@ -7,37 +7,37 @@ export const Login = () => {
 
   if (session) {
     return (
-      <VStack>
-        <Text>{session.user.email}</Text>
-        <Image src={session.user.image} />
-        <Button
-          onClick={() => signOut()}
-          variant="solid"
-          colorScheme="green"
-          rounded="button"
-          flexGrow={3}
-          mx={2}
-          width="full"
-        >
-          Sign Out
-        </Button>
-      </VStack>
+      <Button
+        position="fixed"
+        top={4}
+        right={75}
+        onClick={() => signOut()}
+        variant="solid"
+        colorScheme="green"
+        rounded="button"
+        flexGrow={3}
+        mx={2}
+        width="100px"
+      >
+        Sign Out
+      </Button>
     )
   } else {
     return (
-      <VStack>
-        <Button
-          onClick={() => signIn()}
-          variant="solid"
-          colorScheme="green"
-          rounded="button"
-          flexGrow={3}
-          mx={2}
-          width="full"
-        >
-          Sign In
-        </Button>
-      </VStack>
+      <Button
+        position="fixed"
+        top={4}
+        right={75}
+        onClick={() => signIn()}
+        variant="solid"
+        colorScheme="green"
+        rounded="button"
+        flexGrow={3}
+        mx={2}
+        width="100px"
+      >
+        Sign In
+      </Button>
     )
   }
 }

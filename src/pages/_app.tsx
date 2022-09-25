@@ -5,14 +5,18 @@ import { AppProps } from "next/app"
 
 import { SessionProvider } from "next-auth/react"
 
-function MyApp({ Component, pageProps, session }: AppProps) {
+import { AuthProvider } from "../contexts/Auth"
+require("../firebase")
+function App({ Component, pageProps, session }: AppProps) {
   return (
     <SessionProvider session={session}>
-      <ChakraProvider theme={theme}>
-        <Component {...pageProps} />
-      </ChakraProvider>
+      <AuthProvider>
+        <ChakraProvider theme={theme}>
+          <Component {...pageProps} />
+        </ChakraProvider>
+      </AuthProvider>
     </SessionProvider>
   )
 }
 
-export default MyApp
+export default App
