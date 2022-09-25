@@ -9,6 +9,7 @@ import { FirebaseLogin } from "../components/FirebaseLogin"
 import React from "react"
 import { useAuthContext } from "../contexts/Auth"
 import { Text } from "@chakra-ui/react"
+import { WalletMultiButton } from "@solana/wallet-adapter-react-ui"
 
 export default function Home() {
   const uid = useAuthContext()
@@ -17,8 +18,8 @@ export default function Home() {
   // User Authentication
   return (
     <Container>
+      {/* <WalletMultiButton /> */}
       <DarkModeSwitch />
-
       <FirebaseLogin />
       <Solana />
       {/* <Login /> */}

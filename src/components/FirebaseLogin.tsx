@@ -1,8 +1,9 @@
-import { Button, VStack } from "@chakra-ui/react"
+import { Button, Flex, Box, VStack, HStack } from "@chakra-ui/react"
 import { useSession, signIn, signOut } from "next-auth/react"
 import React from "react"
 import { FcGoogle } from "react-icons/fc"
 import { useAuthContext } from "../contexts/Auth"
+import { WalletMultiButton } from "@solana/wallet-adapter-react-ui"
 
 import {
   getAuth,
@@ -37,39 +38,42 @@ export const FirebaseLogin = () => {
     await FirebaseSignOut(firebaseAuth)
   }
 
-  if (uid === null) {
-    return (
-      <Button
-        position="fixed"
-        top={4}
-        left={75}
-        onClick={() => signIn()}
-        variant="solid"
-        colorScheme="green"
-        rounded="button"
-        flexGrow={3}
-        mx={2}
-        width="100px"
-      >
-        Sign In
-      </Button>
-    )
-  } else {
-    return (
-      <Button
-        position="fixed"
-        top={4}
-        left={75}
-        onClick={() => signOut()}
-        variant="solid"
-        colorScheme="green"
-        rounded="button"
-        flexGrow={3}
-        mx={2}
-        width="100px"
-      >
-        Sign Out
-      </Button>
-    )
-  }
+  return (
+    <div>
+      <VStack>
+        {uid ? (
+          <Button
+            position="fixed"
+            top={4}
+            left={75}
+            onClick={() => signOut()}
+            variant="solid"
+            colorScheme="green"
+            rounded="button"
+            flexGrow={3}
+            mx={2}
+            width="100px"
+          >
+            Sign Out
+          </Button>
+        ) : (
+          <Button
+            position="fixed"
+            top={4}
+            left={75}
+            onClick={() => signIn()}
+            variant="solid"
+            colorScheme="green"
+            rounded="button"
+            flexGrow={3}
+            mx={2}
+            width="100px"
+          >
+            Sign In
+          </Button>
+        )}
+        <WalletMultiButton />
+      </VStack>
+    </div>
+  )
 }
