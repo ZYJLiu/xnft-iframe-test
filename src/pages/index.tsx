@@ -6,6 +6,7 @@ import { CTA } from "../components/CTA"
 import { Login } from "../components/Login"
 import Solana from "../components/Solana"
 import { FirebaseLogin } from "../components/FirebaseLogin"
+import Scanner from "../components/Scanner"
 import React from "react"
 import { useAuthContext } from "../contexts/Auth"
 import { Text } from "@chakra-ui/react"
@@ -22,6 +23,7 @@ export default function Home() {
       <DarkModeSwitch />
       <FirebaseLogin />
       <Solana />
+      {/* <Scanner /> */}
       {/* <Login /> */}
 
       {/* <CTA /> */}

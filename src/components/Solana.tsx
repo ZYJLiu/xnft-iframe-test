@@ -25,6 +25,7 @@ import {
   sendAndConfirmTransaction,
 } from "@solana/web3.js"
 import sha256 from "crypto-js/sha256"
+import Scanner from "../components/Scanner"
 
 const Solana = () => {
   const uid = useAuthContext()
@@ -144,6 +145,7 @@ const Solana = () => {
               </Button>
             </VStack>
           </form>
+          <Scanner />
         </Container>
       )}
     </div>
