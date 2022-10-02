@@ -10,7 +10,6 @@ import {
   VStack,
 } from "@chakra-ui/react"
 import { useEffect, useState, useCallback } from "react"
-import { FcGoogle } from "react-icons/fc"
 import { useAuthContext } from "../contexts/Auth"
 import { Container } from "./Container"
 
@@ -28,21 +27,10 @@ import sha256 from "crypto-js/sha256"
 import Scanner from "../components/Scanner"
 
 const Solana = () => {
-  const uid = useAuthContext()
-  const [keypair, setKeypair] = useState<Keypair>(new Keypair())
+  const keypair = useAuthContext()
   const [balance, setBalance] = useState(0)
-  const [amount, setAmount] = useState(0)
-  // const connection = new Connection(clusterApiUrl("devnet"))
   const { connection } = useConnection()
   const { publicKey, sendTransaction } = useWallet()
-
-  const generateKeypair = async () => {
-    console.log(uid)
-    const buffer = Buffer.from(sha256(uid).toString()).slice(0, 32)
-    const keypair = Keypair.fromSeed(new Uint8Array(buffer))
-    console.log("test", keypair.publicKey.toString())
-    setKeypair(keypair)
-  }
 
   const airdrop = useCallback(async () => {
     const signature = await connection.requestAirdrop(
@@ -82,12 +70,6 @@ const Solana = () => {
   }
 
   useEffect(() => {
-    if (uid) {
-      generateKeypair()
-    }
-  }, [uid])
-
-  useEffect(() => {
     if (keypair) {
       getBalance()
     }
@@ -95,14 +77,14 @@ const Solana = () => {
 
   return (
     <div>
-      {uid && (
+      {keypair && (
         <Container
           width={"100vw"}
           height={"100vh"}
           alignContent={"center"}
           justifyContent={"center"}
         >
-          <Text>UID: {uid}</Text>
+          {/* <Text>Email: {email}</Text> */}
           <Text>PUBLIC KEY: {keypair.publicKey.toString()}</Text>
           <Text>Balance: {balance}</Text>
           <Button

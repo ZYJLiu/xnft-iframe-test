@@ -1,9 +1,6 @@
 import { Button, Flex, Box, VStack, HStack } from "@chakra-ui/react"
-import { useSession, signIn, signOut } from "next-auth/react"
 import React from "react"
-import { FcGoogle } from "react-icons/fc"
 import { useAuthContext } from "../contexts/Auth"
-import { WalletMultiButton } from "@solana/wallet-adapter-react-ui"
 
 import {
   getAuth,
@@ -15,14 +12,11 @@ import { useRouter } from "next/router"
 import Link from "next/link"
 
 export const FirebaseLogin = () => {
-  const { data: session } = useSession()
-  console.log(session)
-
   const firebaseAuth = getAuth()
   const provider = new GoogleAuthProvider()
   const router = useRouter()
 
-  const uid = useAuthContext()
+  const email = useAuthContext()
 
   const signIn = async () => {
     try {
@@ -39,41 +33,32 @@ export const FirebaseLogin = () => {
   }
 
   return (
-    <div>
-      <VStack>
-        {uid ? (
-          <Button
-            position="fixed"
-            top={4}
-            left={75}
-            onClick={() => signOut()}
-            variant="solid"
-            colorScheme="green"
-            rounded="button"
-            flexGrow={3}
-            mx={2}
-            width="100px"
-          >
-            Sign Out
-          </Button>
-        ) : (
-          <Button
-            position="fixed"
-            top={4}
-            left={75}
-            onClick={() => signIn()}
-            variant="solid"
-            colorScheme="green"
-            rounded="button"
-            flexGrow={3}
-            mx={2}
-            width="100px"
-          >
-            Sign In
-          </Button>
-        )}
-        <WalletMultiButton />
-      </VStack>
-    </div>
+    <>
+      {email ? (
+        <Button
+          variant="solid"
+          colorScheme="green"
+          rounded="button"
+          flexGrow={3}
+          mx={2}
+          width="100px"
+          onClick={() => signOut()}
+        >
+          Sign Out
+        </Button>
+      ) : (
+        <Button
+          variant="solid"
+          colorScheme="green"
+          rounded="button"
+          flexGrow={3}
+          mx={2}
+          width="100px"
+          onClick={() => signIn()}
+        >
+          Sign In
+        </Button>
+      )}
+    </>
   )
 }

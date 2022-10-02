@@ -3,7 +3,7 @@ import {
   ConnectionProvider,
   WalletProvider,
 } from "@solana/wallet-adapter-react"
-import { WalletModalProvider as ReactUIWalletModalProvider } from "@solana/wallet-adapter-react-ui"
+import { WalletModalProvider } from "@solana/wallet-adapter-react-ui"
 import {
   PhantomWalletAdapter,
   SolflareWalletAdapter,
@@ -15,6 +15,7 @@ require("@solana/wallet-adapter-react-ui/styles.css")
 const WalletContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const network = WalletAdapterNetwork.Devnet
   //   const network = WalletAdapterNetwork.Mainnet;
+  // const endpoint = useMemo(() => "https://devnet.genesysgo.net/", [network])
   const endpoint = useMemo(() => clusterApiUrl(network), [network])
 
   const wallets = useMemo(
@@ -26,7 +27,7 @@ const WalletContextProvider: FC<{ children: ReactNode }> = ({ children }) => {
     // TODO: updates needed for updating and referencing endpoint: wallet adapter rework
     <ConnectionProvider endpoint={endpoint}>
       <WalletProvider wallets={wallets} autoConnect>
-        <ReactUIWalletModalProvider>{children}</ReactUIWalletModalProvider>
+        <WalletModalProvider>{children}</WalletModalProvider>
       </WalletProvider>
     </ConnectionProvider>
   )
