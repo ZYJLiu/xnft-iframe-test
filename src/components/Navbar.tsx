@@ -58,7 +58,7 @@ export default function Navbar() {
             aria-label={"Toggle Navigation"}
           />
         </Flex>
-        {/* <DarkModeSwitch /> */}
+        <DarkModeSwitch />
         <Flex flex={{ base: 1 }} justify={{ base: "center", md: "start" }}>
           <Flex display={{ base: "none", md: "flex" }} ml={10}>
             <DesktopNav />
@@ -66,7 +66,8 @@ export default function Navbar() {
         </Flex>
 
         <HStack justify={"flex-end"} direction={"row"} spacing={6}>
-          <WalletMultiButton className={styles["wallet-adapter-button"]} />
+          {/* <WalletMultiButton className={styles["wallet-adapter-button"]} /> */}
+          <WalletMultiButton />
           <FirebaseLogin />
         </HStack>
       </Flex>

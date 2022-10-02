@@ -77,14 +77,12 @@ export const DisplayPromo: FC<PromoProps> = (props) => {
               <Heading fontSize={"2xl"} fontFamily={"body"} fontWeight={500}>
                 {data.name}
               </Heading>
-              <Stack direction={"column"} align={"center"}>
-                <Text fontWeight={800} fontSize={"xl"}>
-                  {data.description}
-                </Text>
-                <Text textDecoration={"line-through"} color={"gray.600"}>
-                  {data.attributes.restrictions}
-                </Text>
-              </Stack>
+              <Text fontWeight={800} fontSize={"xl"}>
+                {data.description}
+              </Text>
+              <Text textDecoration={"line-through"} color={"gray.600"}>
+                {data.attributes.restrictions}
+              </Text>
               {/* <HStack direction={"column"} align={"center"}>
                 <Text fontWeight={800} fontSize={"xl"}>
                   {data.attributes[0].trait_type}
