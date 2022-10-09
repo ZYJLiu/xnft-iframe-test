@@ -13,7 +13,6 @@ import {
   PopoverTrigger,
   PopoverContent,
   useColorModeValue,
-  useBreakpointValue,
   useDisclosure,
 } from "@chakra-ui/react"
 import {
@@ -22,7 +21,6 @@ import {
   ChevronDownIcon,
   ChevronRightIcon,
 } from "@chakra-ui/icons"
-import { FirebaseLogin } from "../components/FirebaseLogin"
 import { WalletMultiButton } from "@solana/wallet-adapter-react-ui"
 import { DarkModeSwitch } from "../components/DarkModeSwitch"
 import styles from "../styles/Home.module.css"
@@ -68,7 +66,6 @@ export default function Navbar() {
         <HStack justify={"flex-end"} direction={"row"} spacing={6}>
           {/* <WalletMultiButton className={styles["wallet-adapter-button"]} /> */}
           <WalletMultiButton />
-          <FirebaseLogin />
         </HStack>
       </Flex>
 
@@ -245,42 +242,23 @@ interface NavItem {
 
 const NAV_ITEMS: Array<NavItem> = [
   {
-    label: "Merchant",
+    label: "Home",
     children: [
       {
-        label: "Home",
-        subLabel: "Airdrop SOL if needed",
-        href: "/",
-      },
-      {
-        label: "Setup",
-        subLabel: "Create Merchant Account and Coupons",
-        href: "/merchant",
-      },
-      {
-        label: "Promotions",
-        subLabel: "Display All Merchant Coupons",
-        href: "/merchantPromo",
-      },
-    ],
-  },
-  {
-    label: "Customer",
-    children: [
-      {
-        label: "Job Board",
-        subLabel: "Find your dream design job",
+        label: "WAO",
+        subLabel: "WAO",
         href: "#",
       },
       {
-        label: "Freelance Projects",
-        subLabel: "An exclusive list for contract work",
+        label: "More WAO",
+        subLabel: "More WAO",
+        href: "#",
+      },
+      {
+        label: "More More WAO",
+        subLabel: "More More WAO",
         href: "#",
       },
     ],
-  },
-  {
-    label: "Point of Sale",
-    href: "#",
   },
 ]
