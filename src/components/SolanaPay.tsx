@@ -71,12 +71,10 @@ const SolanaPay = () => {
               <VStack>
                 <Text>PublicKey</Text>
                 <Text margin="5">
-                  {window.xnft.solana.publicKey.toBase58().substring(0, 4)}...
-                  {window.xnft.solana.publicKey
+                  {publicKey.toBase58().substring(0, 4)}...
+                  {publicKey
                     .toBase58()
-                    .substring(
-                      window.xnft.solana.publicKey.toBase58().length - 4
-                    )}
+                    .substring(publicKey.toBase58().length - 4)}
                 </Text>
               </VStack>
             )}
