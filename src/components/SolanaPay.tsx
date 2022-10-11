@@ -57,12 +57,12 @@ const SolanaPay = () => {
   }, [])
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
+    if (typeof window.xnft !== "undefined") {
       // Client-side-only code
       setPublicKey(window.xnft.solana.publicKey)
       console.log("load", window.xnft.solana.publicKey.toBase58())
     }
-  }, [window])
+  }, [])
 
   return (
     <div>
