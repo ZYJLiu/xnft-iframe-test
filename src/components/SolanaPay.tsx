@@ -78,7 +78,15 @@ const SolanaPay = () => {
                 </Text>
               </VStack>
             ) : (
-              <Text>Not Connected</Text>
+              <VStack>
+                <Text>PublicKey</Text>
+                <Text margin="5">
+                  {publicKey.toBase58().substring(0, 4)}...
+                  {publicKey
+                    .toBase58()
+                    .substring(publicKey.toBase58().length - 4)}
+                </Text>
+              </VStack>
             )}
             {/* <FormLabel>Solana Pay Test</FormLabel>
             <NumberInput
