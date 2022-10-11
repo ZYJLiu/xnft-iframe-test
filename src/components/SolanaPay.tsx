@@ -54,9 +54,12 @@ const SolanaPay = () => {
     // console.log("testing", window.xnft.solana.publicKey.toBase58())
     // console.log("testing", window.xnft)
     setIsReady(true)
-    if (window.xnft.solana.publicKey) {
+    // if (window.xnft.solana.publicKey) {
+    try {
       setPublicKey(window.xnft.solana.publicKey)
-    }
+    } catch (e) {}
+
+    // }
   }, [])
 
   return (
