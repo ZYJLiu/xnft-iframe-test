@@ -14,6 +14,9 @@ import {
 } from "@chakra-ui/react"
 import { useEffect, useState, useCallback } from "react"
 import { Container } from "./Container"
+import dynamic from "next/dynamic"
+
+const XNft = dynamic(() => import("./XNFT"), { ssr: false })
 
 import { useWallet } from "@solana/wallet-adapter-react"
 
@@ -53,30 +56,17 @@ const SolanaPay = () => {
   useEffect(() => {
     console.log("load", window.xnft.solana.publicKey.toBase58())
     // console.log("testing", window.xnft)
-    setIsReady(true)
-  }, [])
-
-  if (process.browser) {
     setPublicKey(window.xnft.solana.publicKey)
     console.log("load", window.xnft.solana.publicKey.toBase58())
-  }
+    setIsReady(true)
+  }, [])
 
   return (
     <div>
       {isReady && (
         <Container alignContent={"center"} justifyContent={"top"}>
+          <XNft />
           <VStack>
-            {publicKey && (
-              <VStack>
-                <Text>PublicKey</Text>
-                <Text margin="5">
-                  {publicKey.toBase58().substring(0, 4)}...
-                  {publicKey
-                    .toBase58()
-                    .substring(publicKey.toBase58().length - 4)}
-                </Text>
-              </VStack>
-            )}
             {/* <FormLabel>Solana Pay Test</FormLabel>
             <NumberInput
               id="amount"
