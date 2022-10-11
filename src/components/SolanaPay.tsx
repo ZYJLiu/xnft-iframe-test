@@ -67,7 +67,7 @@ const SolanaPay = () => {
       {isReady && (
         <Container alignContent={"center"} justifyContent={"top"}>
           <VStack>
-            {publicKey? (
+            {publicKey ? (
               <VStack>
                 <Text>PublicKey</Text>
                 <Text margin="5">
@@ -77,6 +77,8 @@ const SolanaPay = () => {
                     .substring(publicKey.toBase58().length - 4)}
                 </Text>
               </VStack>
+            ) : (
+              <Text>Not Connected</Text>
             )}
             {/* <FormLabel>Solana Pay Test</FormLabel>
             <NumberInput
