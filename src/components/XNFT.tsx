@@ -43,8 +43,8 @@ const XNft = () => {
         <VStack margin="5">
           <Text>PublicKey</Text>
           <Text margin="5">
-            {publicKey.toBase58().substring(0, 4)}...
-            {publicKey.toBase58().substring(publicKey.toBase58().length - 4)}
+            {publicKey.toString().substring(0, 4)}...
+            {publicKey.toString().substring(publicKey.toBase58().length - 4)}
           </Text>
         </VStack>
       )}
