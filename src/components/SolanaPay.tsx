@@ -55,9 +55,9 @@ const SolanaPay = () => {
     // console.log("testing", window.xnft)
     setIsReady(true)
     // if (window.xnft.solana.publicKey) {
-    try {
-      setPublicKey(window.xnft.solana.publicKey)
-    } catch (e) {}
+    // try {
+    setPublicKey(window.xnft.solana.publicKey)
+    // } catch (e) {}
 
     // }
   }, [])
@@ -67,7 +67,7 @@ const SolanaPay = () => {
       {isReady && (
         <Container alignContent={"center"} justifyContent={"top"}>
           <VStack>
-            {publicKey && (
+            {publicKey? (
               <VStack>
                 <Text>PublicKey</Text>
                 <Text margin="5">
