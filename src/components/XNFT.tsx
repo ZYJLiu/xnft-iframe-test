@@ -27,14 +27,14 @@ import {
 } from "@solana/web3.js"
 
 const XNft = () => {
-  const [isReady, setIsReady] = useState(false)
   const [publicKey, setPublicKey] = useState(null)
 
   useEffect(() => {
-    console.log("load", window.xnft.solana.publicKey.toBase58())
-    // console.log("testing", window.xnft)
-    setIsReady(true)
-    setPublicKey(window.xnft.solana.publicKey)
+    if (typeof window !== "undefined") {
+      console.log("load", window.xnft.solana.publicKey.toBase58())
+      // console.log("testing", window.xnft)
+      setPublicKey(window.xnft.solana.publicKey)
+    }
   }, [])
 
   return (
