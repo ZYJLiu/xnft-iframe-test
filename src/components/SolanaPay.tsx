@@ -57,7 +57,7 @@ const SolanaPay = () => {
     if (window.xnft.solana.publicKey) {
       setPublicKey(window.xnft.solana.publicKey)
     }
-  }, [])
+  }, [window])
 
   return (
     <div>
