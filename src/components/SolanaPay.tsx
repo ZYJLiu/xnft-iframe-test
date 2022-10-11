@@ -50,8 +50,8 @@ const SolanaPay = () => {
   }, [])
 
   useEffect(() => {
-    console.log("testing", window.xnft.solana.publicKey.toBase58())
-    console.log("testing", window.xnft)
+    // console.log("testing", window.xnft.solana.publicKey.toBase58())
+    // console.log("testing", window.xnft)
     setIsReady(true)
   }, [])
 
