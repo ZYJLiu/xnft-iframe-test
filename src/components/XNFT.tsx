@@ -39,9 +39,9 @@ const XNft = () => {
   return (
     <div>
       {publicKey && (
-        <VStack margin="5">
+        <VStack margin="3">
           <Text>PublicKey</Text>
-          <Text margin="5">
+          <Text margin="3">
             {publicKey.toString().substring(0, 4)}...
             {publicKey.toString().substring(publicKey.toBase58().length - 4)}
           </Text>
