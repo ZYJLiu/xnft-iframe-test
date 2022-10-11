@@ -17,7 +17,7 @@ import { Container } from "./Container"
 
 import { useWallet } from "@solana/wallet-adapter-react"
 
-import QrModal from "./Modal"
+// import QrModal from "./Modal"
 import {
   Connection,
   LAMPORTS_PER_SOL,
@@ -104,9 +104,9 @@ const SolanaPay = () => {
               Test Transaction
             </Button>
           </VStack>
-          {isOpen && (
+          {/* {isOpen && (
             <QrModal onClose={onClose} isOpen={isOpen} amount={amount} />
-          )}
+          )} */}
           {url && (
             <iframe width="100%" height="100%" margin="10px" src={url}></iframe>
           )}
