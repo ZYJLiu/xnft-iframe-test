@@ -27,6 +27,7 @@ import {
 } from "@solana/web3.js"
 
 const SolanaPay = () => {
+  const { xnft }: any = window
   // const { wallet } = useWallet()
   const [amount, setAmount] = useState("1")
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -36,22 +37,20 @@ const SolanaPay = () => {
   const sendTransaction = useCallback(async () => {
     try {
       const instruction = SystemProgram.transfer({
-        fromPubkey: new PublicKey(window.xnft.solana.publicKey),
-        toPubkey: new PublicKey(window.xnft.solana.publicKey),
+        fromPubkey: new PublicKey(xnft.solana.publicKey),
+        toPubkey: new PublicKey(xnft.solana.publicKey),
         lamports: +0.1 * LAMPORTS_PER_SOL,
       })
 
-      const signature = await window.xnft.send(
-        new Transaction().add(instruction)
-      )
+      const signature = await xnft.send(new Transaction().add(instruction))
       setUrl(`https://explorer.solana.com/tx/${signature}?cluster=devnet`)
       console.log(signature)
     } catch (e) {}
   }, [])
 
   useEffect(() => {
-    console.log("testing", window.xnft.solana.publicKey.toBase58())
-    console.log("testing", window.xnft)
+    console.log("testing", xnft.solana.publicKey.toBase58())
+    console.log("testing", xnft)
     setIsReady(true)
   }, [])
 
@@ -62,10 +61,10 @@ const SolanaPay = () => {
           <VStack>
             <Text>PublicKey</Text>
             <Text margin="5">
-              {window.xnft.solana.publicKey.toBase58().substring(0, 4)}...
-              {window.xnft.solana.publicKey
+              {xnft.solana.publicKey.toBase58().substring(0, 4)}...
+              {xnft.solana.publicKey
                 .toBase58()
-                .substring(window.xnft.solana.publicKey.toBase58().length - 4)}
+                .substring(xnft.solana.publicKey.toBase58().length - 4)}
             </Text>
             {/* <FormLabel>Solana Pay Test</FormLabel>
             <NumberInput
@@ -107,9 +106,7 @@ const SolanaPay = () => {
           {/* {isOpen && (
             <QrModal onClose={onClose} isOpen={isOpen} amount={amount} />
           )} */}
-          {url && (
-            <iframe width="100%" height="100%" margin="10px" src={url}></iframe>
-          )}
+          {url && <iframe width="100%" height="100%" src={url}></iframe>}
         </Container>
       )}
     </div>
