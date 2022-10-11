@@ -23,7 +23,9 @@ interface Props {
 }
 
 const QrModal = ({ onClose, isOpen, amount }: Props) => {
-  const { xnft }: any = window
+  const { xnft }: any = useState(() =>
+    typeof window === "undefined" ? null : window
+  )
   const qrRef = useRef<HTMLDivElement>(null)
   const [reference, setReference] = useState(Keypair.generate().publicKey)
   const [confirmed, setConfirmed] = useState(false)

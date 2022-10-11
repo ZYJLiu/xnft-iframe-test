@@ -17,7 +17,7 @@ import { Container } from "./Container"
 
 import { useWallet } from "@solana/wallet-adapter-react"
 
-// import QrModal from "./Modal"
+import QrModal from "./Modal"
 import {
   Connection,
   LAMPORTS_PER_SOL,
@@ -27,7 +27,6 @@ import {
 } from "@solana/web3.js"
 
 const SolanaPay = () => {
-  const { xnft }: any = window
   // const { wallet } = useWallet()
   const [amount, setAmount] = useState("1")
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -37,20 +36,22 @@ const SolanaPay = () => {
   const sendTransaction = useCallback(async () => {
     try {
       const instruction = SystemProgram.transfer({
-        fromPubkey: new PublicKey(xnft.solana.publicKey),
-        toPubkey: new PublicKey(xnft.solana.publicKey),
+        fromPubkey: new PublicKey(window.xnft.solana.publicKey),
+        toPubkey: new PublicKey(window.xnft.solana.publicKey),
         lamports: +0.1 * LAMPORTS_PER_SOL,
       })
 
-      const signature = await xnft.send(new Transaction().add(instruction))
+      const signature = await window.xnft.send(
+        new Transaction().add(instruction)
+      )
       setUrl(`https://explorer.solana.com/tx/${signature}?cluster=devnet`)
       console.log(signature)
     } catch (e) {}
   }, [])
 
   useEffect(() => {
-    console.log("testing", xnft.solana.publicKey.toBase58())
-    console.log("testing", xnft)
+    console.log("testing", window.xnft.solana.publicKey.toBase58())
+    console.log("testing", window.xnft)
     setIsReady(true)
   }, [])
 
@@ -61,10 +62,10 @@ const SolanaPay = () => {
           <VStack>
             <Text>PublicKey</Text>
             <Text margin="5">
-              {xnft.solana.publicKey.toBase58().substring(0, 4)}...
-              {xnft.solana.publicKey
+              {window.xnft.solana.publicKey.toBase58().substring(0, 4)}...
+              {window.xnft.solana.publicKey
                 .toBase58()
-                .substring(xnft.solana.publicKey.toBase58().length - 4)}
+                .substring(window.xnft.solana.publicKey.toBase58().length - 4)}
             </Text>
             {/* <FormLabel>Solana Pay Test</FormLabel>
             <NumberInput
@@ -100,12 +101,12 @@ const SolanaPay = () => {
               mb={2}
               onClick={sendTransaction}
             >
-              Test Transaction
+              Send 0.1 SOL
             </Button>
           </VStack>
-          {/* {isOpen && (
+          {isOpen && (
             <QrModal onClose={onClose} isOpen={isOpen} amount={amount} />
-          )} */}
+          )}
           {url && <iframe width="100%" height="100%" src={url}></iframe>}
         </Container>
       )}
