@@ -26,7 +26,7 @@ const QrModal = ({ onClose, isOpen, amount }: Props) => {
   const qrRef = useRef<HTMLDivElement>(null)
   const [reference, setReference] = useState(Keypair.generate().publicKey)
   const [confirmed, setConfirmed] = useState(false)
-  const { publicKey, sendTransaction } = useWallet()
+  // const { publicKey, sendTransaction } = useWallet()
   const connection = useConnection()
 
   const [size, setSize] = useState(() =>
@@ -50,9 +50,10 @@ const QrModal = ({ onClose, isOpen, amount }: Props) => {
     const params = new URLSearchParams()
     params.append("reference", reference.toString())
     params.append("amount", amount.toString())
-    if (publicKey) {
-      params.append("publicKey", publicKey.toString())
-    }
+    params.append("publicKey", window.xnft.solana.publicKey.toString())
+    // if (publicKey) {
+    //   params.append("publicKey", publicKey.toString())
+    // }
 
     const apiUrl = `${location.protocol}//${
       location.host
@@ -71,7 +72,7 @@ const QrModal = ({ onClose, isOpen, amount }: Props) => {
       qrRef.current.innerHTML = ""
       qr.append(qrRef.current)
     }
-  }, [publicKey, amount])
+  }, [window, amount])
 
   // Check every 0.5s if the transaction is completed
   useEffect(() => {

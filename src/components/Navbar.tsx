@@ -65,7 +65,7 @@ export default function Navbar() {
 
         <HStack justify={"flex-end"} direction={"row"} spacing={6}>
           {/* <WalletMultiButton className={styles["wallet-adapter-button"]} /> */}
-          <WalletMultiButton />
+          {/* <WalletMultiButton /> */}
         </HStack>
       </Flex>
 

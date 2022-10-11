@@ -8,14 +8,14 @@ import Navbar from "../components/Navbar"
 
 function App({ Component, pageProps }: AppProps) {
   return (
-    <WalletContextProvider>
-      <WorkspaceProvider>
-        <ChakraProvider theme={theme}>
-          <Navbar />
-          <Component {...pageProps} />
-        </ChakraProvider>
-      </WorkspaceProvider>
-    </WalletContextProvider>
+    // <WalletContextProvider>
+    // <WorkspaceProvider>
+    <ChakraProvider theme={theme}>
+      <Navbar />
+      <Component {...pageProps} />
+    </ChakraProvider>
+    // </WorkspaceProvider>
+    // </WalletContextProvider>
   )
 }
 
