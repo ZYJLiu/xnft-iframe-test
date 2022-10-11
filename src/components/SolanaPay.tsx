@@ -67,9 +67,9 @@ const SolanaPay = () => {
         <Container alignContent={"center"} justifyContent={"top"}>
           {/* <XNft /> */}
           {publicKey && (
-            <VStack margin="5">
+            <VStack margin="3">
               <Text>PublicKey</Text>
-              <Text margin="5">
+              <Text margin="3">
                 {publicKey.toString().substring(0, 4)}...
                 {publicKey
                   .toString()
