@@ -32,6 +32,7 @@ const SolanaPay = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [isReady, setIsReady] = useState(false)
   const [url, setUrl] = useState(null)
+  const [publicKey, setPublicKey] = useState(null)
 
   const sendTransaction = useCallback(async () => {
     try {
@@ -53,6 +54,9 @@ const SolanaPay = () => {
     // console.log("testing", window.xnft.solana.publicKey.toBase58())
     // console.log("testing", window.xnft)
     setIsReady(true)
+    if (window.xnft.solana.publicKey) {
+      setPublicKey(window.xnft.solana.publicKey)
+    }
   }, [])
 
   return (
@@ -60,13 +64,19 @@ const SolanaPay = () => {
       {isReady && (
         <Container alignContent={"center"} justifyContent={"top"}>
           <VStack>
-            <Text>PublicKey</Text>
-            <Text margin="5">
-              {window.xnft.solana.publicKey.toBase58().substring(0, 4)}...
-              {window.xnft.solana.publicKey
-                .toBase58()
-                .substring(window.xnft.solana.publicKey.toBase58().length - 4)}
-            </Text>
+            {publicKey && (
+              <VStack>
+                <Text>PublicKey</Text>
+                <Text margin="5">
+                  {window.xnft.solana.publicKey.toBase58().substring(0, 4)}...
+                  {window.xnft.solana.publicKey
+                    .toBase58()
+                    .substring(
+                      window.xnft.solana.publicKey.toBase58().length - 4
+                    )}
+                </Text>
+              </VStack>
+            )}
             {/* <FormLabel>Solana Pay Test</FormLabel>
             <NumberInput
               id="amount"
