@@ -31,7 +31,6 @@ const XNft = () => {
 
   useEffect(() => {
     if (typeof window.xnft !== "undefined") {
-      // console.log("load", window.xnft.solana.publicKey.toString())
       // console.log("testing", window.xnft)
       setPublicKey(window.xnft.solana.publicKey)
     }
